@@ -33,3 +33,4 @@ vars:
   a3mega_maintenance_interval: "" # 空欄のまま
   a3mega_cluster_size: 2 # A3 Mega のノード数
   server_ip_lustrefs: "" # slurm-a3mega-base-lustre.yaml 実行後に出力される MGS サーバーの IP アドレス
+  local_mount_lustrefs: "" # Lustre をマウントするパス (例：/data)

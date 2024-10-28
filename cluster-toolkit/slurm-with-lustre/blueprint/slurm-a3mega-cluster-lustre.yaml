@@ -49,7 +49,7 @@ deployment_groups:
       fs_type: lustre
       server_ip: $(vars.server_ip_lustrefs)@tcp
       local_mount: $(vars.local_mount_lustrefs)
-      remote_mount: $(vars.remote_mount_lustrefs)
+      remote_mount: "/exacloud"
 
   # if an existing bucket is desired, follow modules/file-system/pre-existing-network-storage/README.md
   # - id: data-bucket
@@ -232,7 +232,7 @@ deployment_groups:
     settings:
       name_prefix: login
       disk_type: pd-balanced
-      machine_type: c2-standard-32
+      machine_type: c2-standard-16
       enable_login_public_ips: false
 
   - id: slurm_controller
