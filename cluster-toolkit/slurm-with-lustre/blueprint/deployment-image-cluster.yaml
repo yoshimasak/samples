@@ -1,0 +1,35 @@
+# Copyright 2024 "Google LLC"
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+terraform_backend_defaults:
+  type: gcs
+  configuration:
+    bucket: customer-bucket # Terraform の State を保存する GCS バケット
+
+vars:
+  project_id: customer-project # プロジェクト ID
+  region: customer-region # 利用するリージョン
+  zone: customer-zone # 利用するゾーン
+  network_name_system: a3mega-sys-net
+  subnetwork_name_system: a3mega-sys-subnet
+  enable_ops_agent: true
+  enable_nvidia_dcgm: true
+  disk_size_gb: 200
+  final_image_family: slurm-a3mega
+  slurm_cluster_name: a3mega
+  a3mega_reservation_name: "" # A3 Mega の予約名
+  a3mega_maintenance_interval: "" # 空欄のまま
+  a3mega_cluster_size: 2 # A3 Mega のノード数
+  server_ip_lustrefs: "" # slurm-a3mega-base-lustre.yaml 実行後に出力される MGS サーバーの IP アドレス
