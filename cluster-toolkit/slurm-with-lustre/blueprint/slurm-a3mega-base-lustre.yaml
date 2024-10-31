@@ -36,7 +36,6 @@ deployment_groups:
         subnet_region: $(vars.region)
         new_bits: 4
         subnet_private_access: true
-        description: primary subnetwork in gsc-sys-net
     outputs:
     - network_name
     - subnetwork_name
