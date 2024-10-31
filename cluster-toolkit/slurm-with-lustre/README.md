@@ -20,7 +20,7 @@ Cluster Toolkit では Slurm クラスタや Google Kubernetes Engine (GKE) な�
 また、今回は Lustre ファイル システムとして Google Cloud の Marketplace 上で利用可能な [DDN EXAScaler](https://www.ddn.com/ddn-cloud-services/) を利用します。
 
 ただし、最新の Cluster Toolkit はクライアント OS として Debian を利用している一方で DDN EXAScaler はクライアント OS として RHEL、および Ubuntu をサポートします。  
-そのため、本手順では Cluster Toolkit の v.1.39.0 を利用し、Slurm クラスタの OS を DDN EXAScaper がサポートする Ubuntu へ変更します。
+そのため、本手順では Cluster Toolkit の v.1.41.0 (2024 年 10 月 31 日時点での最新版) を利用し、Slurm クラスタの OS を DDN EXAScaper がサポートする Ubuntu へ変更します。
 
 ### 1-1. 環境準備
 Cluster Toolkit は Terraform や Packer などがインストールされていることを前提とします。  
@@ -28,7 +28,7 @@ Cluster Toolkit は Terraform や Packer などがインストールされてい
 その上で、以下のコマンドで Cluster Toolkit の v1.39.0 をローカル環境にクローンします。
 
 ```bash
-git clone https://github.com/GoogleCloudPlatform/cluster-toolkit -b v1.39.0
+git clone https://github.com/GoogleCloudPlatform/cluster-toolkit -b v1.41.0
 ```
 
 ### 1-2. Cluster Toolkit のビルド
