@@ -1,0 +1,39 @@
+apiVersion: cloud.google.com/v1
+kind: ComputeClass
+metadata:
+  name: model-inference-class
+spec:
+  nodePoolAutoCreation:
+    enabled: true
+  priorities:
+    - machineType: a3-highgpu-8g
+      spot: false
+      gpu:
+        type: nvidia-h100-80gb
+        count: 8
+      reservations:
+        specific:
+        - name: a3-highgpu-reservation
+          project: # PROJECT ID
+      location:
+        zones:
+          - us-central1-b # YOUR ZONE
+    - machineType: a3-highgpu-8g
+      gpu:
+        type: nvidia-h100-80gb
+        count: 8
+      flexStart:
+        enabled: true
+        nodeRecycling:
+          leadTimeSeconds: 600
+      location:
+        zones:
+          - us-central1-b # YOUR ZONE
+    - machineType: a3-highgpu-8g
+      spot: true
+      gpu:
+        type: nvidia-h100-80gb
+        count: 8
+      location:
+        zones:
+          - us-central1-b # YOUR ZONE
