@@ -1,7 +1,7 @@
 # GKE Inference Gateway を利用した推論基盤の構築
 
 本チュートリアルでは、Google Kubernetes Engine (GKE) 上で **本番運用を見据えた AI 推論基盤** を構築します。
-単にモデルを動かすだけでなく、**GKE Inference Gateway** を活用し、高度なルーティングを実装します。
+単にモデルを動かすだけでなく、[GKE Inference Gateway](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/about-gke-inference-gateway) を活用し、高度なルーティングを実装します。
 
 **本チュートリアルのゴール:**
 - **GKE Autopilot クラスタの構築:** モデルをデプロイするための GKE Autopilot クラスタの構築 
@@ -120,7 +120,9 @@ kubectl apply -f  https://github.com/kubernetes-sigs/gateway-api-inference-exten
 
 GKE のデフォルトではひとつのノードプールにひとつの Consumption モデル (オンデマンド VM, Spot VM など) のみが指定できます。カスタム コンピューティング クラスを利用することで複数の Consumption モデルの優先順位を指定し、優先順位が高い Consumption モデルのリソースがない場合などに次のモデルにフォールバックできます。
 
-今回のチュートリアルでは予約済みリソース、DWS Flex VM、Spot VM の順に優先度を高く設定したマニフェストとして model-inference-class.yaml を用意しています。必要に応じて優先順位の変更などを実施した上で以下のコマンドを実行します。
+今回のチュートリアルでは予約済みリソース、[DWS Flex VM](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/dws)、Spot VM の順に優先度を高く設定したマニフェストとして model-inference-class.yaml を用意しています。必要に応じて優先順位の変更などを実施した上で以下のコマンドを実行します。
+
+予約済みリソースを最も優先度高く設定し、次に DWS Flex VM、Spot VM と設定することで予約済みリソースをすべて利用した場合でも別の Consumption モデルでリソースがデプロイ可能になります。 
 
 ```bash
 kubectl apply -f model-inference-class.yaml
